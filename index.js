@@ -2,26 +2,25 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const additionalUrls = (process.env.ADD_URL || '').split(',');
+const additionalUrls = process.env.ADD_URL;
 
 const listUrls = [
-  'https://forms.gle/z8UPzyTSrL3KpVE16', //1
-  'https://forms.gle/nPbsTvfWQ7HEP2Sb8', //2
-  'https://forms.gle/ZQqEzGTtJYugSahq5', //3
-
-  'https://forms.gle/t8BgmkvanEtbUKsM8', //5
-  'https://forms.gle/byCbQnYLyvYENY5DA', //6
-  'https://forms.gle/hnR875PdMBMDSuYBA', //7
-  'https://forms.gle/M4iqtkVAaChdVGrU9', //8
-  'https://forms.gle/YM2WBmRsvDcEJjRLA', //9
-
-  'https://forms.gle/DyZ76dCPTSpRduBw7', //11
-  'https://forms.gle/1TTKW6rRRjGve5rB9', //12
-  'https://forms.gle/VoRazxZPknj4NmTE6', //13
-  'https://forms.gle/r3sNgfLJ9xtLdHKB7', //14
-  'https://forms.gle/yqkJQnB4ZA6cxP7x7', //15
-  ...additionalUrls
+  'https://extendedforms.io/form/94f5d659-82e9-4320-b8c5-9380aa4c2aec/login',
+  'https://extendedforms.io/form/94f533f9-be95-4838-a6f9-5b8adb4f6cb2/login',
+  'https://extendedforms.io/form/94f5d4d9-f645-4266-bdcc-400593cb1a05/login',
+  'https://extendedforms.io/form/94f5d483-24b7-4fa1-813e-6718a9638840/login',
+  'https://extendedforms.io/form/94f5d416-b77c-4c11-b07b-1a7a2889746a/login',
+  'https://extendedforms.io/form/94f5d348-7a0f-4836-8afe-ef856791f659/login',
+  'https://extendedforms.io/form/94f5d2e6-021d-427d-a2bd-2c9eb254ce7a/login',
+  'https://extendedforms.io/form/94f5b5fc-dde6-434b-b801-7610db04825d/login',
+  'https://extendedforms.io/form/94f51c1c-91ac-46ed-918b-917f17838170/login',
 ];
+
+if (additionalUrls) {
+  listUrls.push(...additionalUrls.split(','));
+}
+console.log('LIST URLS: ');
+console.log(listUrls);
 
 function randomUrl() {
     const max = listUrls.length;
